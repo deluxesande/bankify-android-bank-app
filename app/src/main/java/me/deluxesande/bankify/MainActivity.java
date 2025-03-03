@@ -1,12 +1,17 @@
 package me.deluxesande.bankify;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
+import me.deluxesande.bankify.fragments.HomePage;
+import me.deluxesande.bankify.fragments.ProfilePage;
+import me.deluxesande.bankify.fragments.StatsPage;
+import me.deluxesande.bankify.fragments.WalletPage;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,5 +19,34 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.bottom_home);
+        bottomNavigationView.setOnItemSelectedListener(navListener);
+
+        Fragment selectedFragment = new HomePage();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
     }
+
+    private NavigationBarView.OnItemSelectedListener navListener = item -> {
+        int itemId = item.getItemId();
+
+        Fragment selectedFragment = null;
+
+        if(itemId == R.id.bottom_home) {
+            selectedFragment = new HomePage();
+        } else if(itemId == R.id.bottom_wallet) {
+            selectedFragment = new WalletPage();
+        } else if(itemId == R.id.bottom_stats) {
+            selectedFragment = new StatsPage();
+        } else if(itemId == R.id.bottom_profile) {
+            selectedFragment = new ProfilePage();
+        }
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
+        return true;
+    };
 }
