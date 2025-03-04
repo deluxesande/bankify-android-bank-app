@@ -13,14 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home"
-        android:textSize="36sp"
-        android:textColor="@color/lavender"
-        android:layout_centerInParent="true"/>
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,6 +24,7 @@
         app:itemIconSize="24dp"
         app:itemIconTint="@drawable/item_selector"
         app:itemRippleColor="@android:color/transparent"
+        app:itemBackground="@android:color/transparent"
         app:labelVisibilityMode="unlabeled" />
 
 </RelativeLayout>
