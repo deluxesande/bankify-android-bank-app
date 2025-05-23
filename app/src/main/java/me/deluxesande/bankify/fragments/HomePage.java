@@ -22,4 +22,9 @@ public class HomePage extends Fragment {
 
         return view;
     }
+
+    private void fetchRecentTransactions() {
+        // Get data for transactions
+        // Using the Transaction service
+    }
 }
