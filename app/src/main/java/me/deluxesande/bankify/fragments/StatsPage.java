@@ -41,6 +41,9 @@ public class StatsPage extends Fragment {
         PieData data = new PieData(dataSet);
 
         pieChart.setData(data);
+
+        pieChart.getDescription().setEnabled(false);
+//        pieChart.setDrawHoleEnabled(false);
         pieChart.invalidate(); // refresh
 
         return view;
